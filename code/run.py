@@ -10,7 +10,6 @@ from transformers import get_linear_schedule_with_warmup, RobertaConfig, Roberta
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset, RandomSampler
 
-from model1 import Model_1
 from model2 import Model_2
 from model3 import Model_3
 from model4 import Model_4
@@ -489,9 +488,7 @@ def main():
     # else:
     #     raise ValueError("Unknown model type: {}".format(args.use_model))
 
-    if args.PathNum == 1:
-        model = Model_1(pre_trained_model, pre_trained_model_config, args)
-    elif args.PathNum == 2:
+    if args.PathNum == 2:
         model = Model_2(pre_trained_model, pre_trained_model_config, args)
     elif args.PathNum == 3:
         model = Model_3(pre_trained_model, pre_trained_model_config, args)
