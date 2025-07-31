@@ -1,0 +1,44 @@
+Brotli @ file:///croot/brotli-split_1714483155106/work
+certifi @ file:///croot/certifi_1707229174982/work/certifi
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+contourpy==1.1.1
+cycler==0.12.1
+filelock @ file:///croot/filelock_1700591183607/work
+fonttools==4.57.0
+fsspec @ file:///croot/fsspec_1714461537038/work
+huggingface-hub @ file:///croot/huggingface_hub_1708634519519/work
+idna @ file:///croot/idna_1714398848350/work
+importlib-metadata @ file:///croot/importlib_metadata-suite_1704813515092/work
+importlib_resources==6.4.5
+joblib @ file:///croot/joblib_1713976767370/work
+kiwisolver==1.4.7
+matplotlib==3.7.5
+mkl-fft @ file:///croot/mkl_fft_1695058164594/work
+mkl-random @ file:///croot/mkl_random_1695059800811/work
+mkl-service==2.4.0
+networkx @ file:///home/conda/feedstock_root/build_artifacts/networkx_1658215017934/work
+numpy @ file:///work/mkl/numpy_and_numpy_base_1682952083030/work
+packaging @ file:///croot/packaging_1710807400464/work
+pillow==10.4.0
+platformdirs @ file:///croot/platformdirs_1692205439124/work
+pooch @ file:///croot/pooch_1695850093751/work
+pyparsing==3.1.4
+PySocks @ file:///tmp/build/80754af9/pysocks_1605305779399/work
+python-dateutil==2.9.0.post0
+PyYAML @ file:///croot/pyyaml_1698096049011/work
+regex @ file:///croot/regex_1696515298636/work
+requests @ file:///croot/requests_1707355572290/work
+safetensors @ file:///croot/safetensors_1708633833937/work
+scikit-learn @ file:///tmp/abs_14c5bbf5-8bf9-4690-97ef-5d6b3002ac69j8q9avk9/croots/recipe/scikit-learn_1658326972061/work
+scipy==1.10.1
+shutup==0.2.0
+six==1.17.0
+threadpoolctl @ file:///Users/ktietz/demo/mc3/conda-bld/threadpoolctl_1629802263681/work
+tokenizers @ file:///croot/tokenizers_1708633814160/work
+torch==1.10.0
+tqdm @ file:///croot/tqdm_1714567712644/work
+transformers @ file:///croot/transformers_1708700562495/work
+tree-sitter==0.21.3
+typing_extensions @ file:///croot/typing_extensions_1715268824938/work
+urllib3 @ file:///croot/urllib3_1715635851070/work
+zipp @ file:///croot/zipp_1704206909481/work
