@@ -4,7 +4,8 @@
 
 ## 🎯 Abstract
 
-Fine-tuning pre-trained models has become the mainstream paradigm in software vulnerability detection. Compared with traditional methods, pre-trained models can acquire general programming knowledge from large-scale corpora, exhibit stronger generalization in transfer learning scenarios, and achieve competitive performance even in the absence of extensive labeled data. However, existing vulnerability detection methods based on pre-trained models still suffer from performance bottlenecks when dealing with complex control flows and long code snippets, mainly due to two reasons: (1) Most pre-trained models have input length limitations, which severely hinder their effectiveness on lengthy code. (2) For code with intricate control flows and data dependencies, pre-trained models often struggle to capture the complex internal logic, which impedes their ability to recognize vulnerability-related patterns. To address these issues, we propose PASMG, a novel vulnerability detection method based on Acyclic Simplified Control Flow Graph (ASCFG) path encoding and a multi-objective greedy selection strategy. Specifically, PASMG first parses the Abstract Syntax Tree (AST) to construct an ASCFG, which preserves only the core control flow of the program and simplifies control flow modeling. Then, all feasible paths in the ASCFG are enumerated, and a multi-objective greedy strategy is introduced to select a representative subset of paths by balancing node coverage reward and path length penalty. These selected paths are individually encoded using a pre-trained model, concatenated, and finally fed into a multilayer perceptron for classification. PASMG outperforms existing state-of-the-art baselines in terms of F1 score and recall, as demonstrated by experiments conducted on three widely used public datasets: Reveal, Devign, and VulCNN. Notably, when handling long code snippets (more than 510 tokens), PASMG achieves significant improvements of 27.15% and 61.90%, respectively, showcasing its superiority in analyzing complex code structures.
+Fine-tuning pre-trained models has become the mainstream paradigm for vulnerability detection; however, their effectiveness is still constrained by input length limitations and insufficient semantic comprehension in scenarios involving long code snippets and complex control flows. To address these issues, we propose PASMG, which decomposes long code with intricate control flows into multiple shorter linear control flow paths for vulnerability detection. Specifically, PASMG first traverses the Abstract Syntax Tree (AST) to construct a Statement-Level Acyclic Simplified Control Flow Graph (ASCFG) that captures the program’s core logic. Then, all simple paths from entry to exit nodes are extracted from the ASCFG, and a multi-objective greedy strategy—balancing node coverage rewards and path length penalties—is employed to select K representative paths. Finally, path-level semantic features are extracted using a pre-trained encoder, and a hierarchical feature aggregation mechanism is applied to generate global code representations, which are subsequently fed into a classifier for vulnerability prediction. We evaluate PASMG on one synthetic dataset SARD, and two real-world datasets (Reveal, Devign), totaling 27,003 vulnerable and 56,409 non-vulnerable samples, against 16 baseline methods: 2 program analysis-driven, 4 non-pretrained deep learning, 7 fine-tuning-based, and 3 prompt-based LLM methods. Experimental results demonstrate that PASMG consistently achieves state-of-the-art performance across all three datasets, with F1-score improvements of 3.83%, 3.76%, and 2.49%, respectively. Notably, on long code samples, PASMG surpasses the previously best-performing baseline by up to 9.50%, highlighting its superior capability in
+modeling complex code structures and detecting vulnerabilities.
 
 ## 🏗️ Project Structure
 
@@ -39,7 +40,7 @@ PASMG
 To evaluate the performance of PASMG against other models, we utilized the following three publicly available datasets: 
 * Reveal [1]: https://drive.google.com/drive/folders/1KuIYgFcvWUXheDhT--cBALsfy1I4utOy
 * Devign [2]: https://drive.google.com/drive/folders/1RqtDcOKKnIWxYAmkOTULYeJhuw_KTNys
-* VulCNN [3]: https://github.com/CGCL-codes/VulCNN/blob/main/dataset/Dataset-sard.zip
+* SARD [3]: https://github.com/CGCL-codes/VulCNN/blob/main/dataset/Dataset-sard.zip
 
 ## 📄 Data Format
 
@@ -71,8 +72,11 @@ This is the output of ExtractExecutionPath.py, and is directly used for training
 
 Due to file size limitations, the pre-trained model weights used in PASMG and ablation experiments are not included in this repository. Please download them manually from the following links:
 
-- **PDBERT**: [Download Link (Zenodo)](https://zenodo.org/records/10140638/files/PDBERT_data.zip?)  
 - **CodeBERT**: [Download Link (huggingface)](https://huggingface.co/microsoft/codebert-base/tree/main)
+- **VulBERTa**: [Download Link](https://1drv.ms/u/s!AueKnGqzBuIVkq4CynZHsF8Mv-en1g?e=3gg60p)
+- **CodeT5+**: [Download Link (huggingface)](https://huggingface.co/Salesforce/codet5p-110m-embedding)
+- **UnixCoder-base**: [Download Link (huggingface)](https://huggingface.co/microsoft/unixcoder-base)
+- **PDBERT**: [Download Link (Zenodo)](https://zenodo.org/records/10140638/files/PDBERT_data.zip?)  
 
 After downloading, extract the model folders and place them under:
 ```
