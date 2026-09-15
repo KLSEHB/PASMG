@@ -38,7 +38,7 @@ def analyze_all_files(files, tokenizer):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--tokenizer_name", default="../pretrain-model/pdbert", help="分词器名称或路径")
+    parser.add_argument("--tokenizer_name", default="../pretrained-model/pdbert", help="分词器名称或路径")
     parser.add_argument("--train_file", default="../Dataset/Func_preprocessed/train.jsonl", help="训练集路径")
     parser.add_argument("--valid_file", default="../Dataset/Func_preprocessed/valid.jsonl", help="验证集路径")
     parser.add_argument("--test_file", default="../Dataset/Func_preprocessed/test.jsonl", help="测试集路径")

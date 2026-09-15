@@ -1,7 +1,10 @@
 import shutup; shutup.please()
 
+import os
 import sys
-sys.path.append('/home/user/PASMG/')
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 import argparse
 from parserTool.utils import remove_comments_and_docstrings
 import json
@@ -19,11 +22,10 @@ from collections import deque
 import networkx as nx
 import matplotlib.pyplot as plt
 from matplotlib.ticker import LogLocator, ScalarFormatter
-# from PathFinder import find_paths_with_timeout, count_paths, count_paths_num
+from PathFinder import find_paths_with_timeout, count_paths, count_paths_num
 # from PathFinder_Random import find_paths_with_timeout, count_paths, count_paths_num
-from PathFinder_Shortest import find_paths_with_timeout, count_paths, count_paths_num
+# from PathFinder_Shortest import find_paths_with_timeout, count_paths, count_paths_num
 import signal
-import os
 from transformers import RobertaTokenizer
 
 
@@ -711,7 +713,7 @@ def main():
     parser.add_argument("--ExecutionPaths_validation_set", default="../Dataset/4PathsDataset/14/Devign/valid.jsonl", type=str)
     parser.add_argument("--ExecutionPaths_test_set", default="../Dataset/4PathsDataset/14/Devign/test.jsonl", type=str)
 
-    parser.add_argument("--pretrained_model_path", default="../pretrain-model/pdbert", type=str)
+    parser.add_argument("--pretrained_model_path", default="../pretrained-model/pdbert", type=str)
 
     parser.add_argument("--PathNum", default=4, type=int)
     parser.add_argument("--alpha", default=14, type=int)

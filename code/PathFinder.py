@@ -85,19 +85,20 @@ def greedy_select(all_paths, paths_num, code_dict, args):
 #
 #     print(len(all_paths))
 
-def simple_partial_paths(CFG, exit_nodes, max_paths_per_target=30):
-    """对每个出口节点只找前 N 条最短路径"""
+def simple_partial_paths(CFG, exit_nodes, max_paths=300):
+    """Return at most ``max_paths`` shortest paths across all exit nodes."""
     result = []
     for tgt in exit_nodes:
         try:
-            # 使用 shortest_simple_paths 只取前 N 条
+            # At most max_paths paths from one target can contribute to the
+            # global top max_paths, so further enumeration is unnecessary.
             gen = nx.shortest_simple_paths(CFG, source=1, target=tgt)
-            for _, path in zip(range(max_paths_per_target), gen):
+            for _, path in zip(range(max_paths), gen):
                 result.append(path)
         except nx.NetworkXNoPath:
             pass
 
-    return result
+    return sorted(result, key=len)[:max_paths]
 
 def count_paths(CFG, exit_nodes, time_limit):
     paths_nums_interval = 0
@@ -170,8 +171,8 @@ def find_paths_with_timeout(CFG, exit_nodes, code_dict, args, time_limit):
         paths_nums_interval = 4
         # print(len(all_paths))
 
-    if not simple_select and len(all_paths) > 3000:
-        # print(f"超过3000条，切换到简化搜索策略")
+    if not simple_select and len(all_paths) > 2000:
+        # More than 2,000 paths triggers the 300-shortest-path fallback.
         all_paths = simple_partial_paths(CFG, exit_nodes)
         select_status = 2
         # print(len(all_paths))

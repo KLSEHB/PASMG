@@ -3,7 +3,7 @@
   "ExecutionPaths_valid_set": "../Dataset/4PathsDataset/14/Devign/valid.jsonl",
   "ExecutionPaths_test_set": "../Dataset/4PathsDataset/14/Devign/test.jsonl",
   "output_dir": "../saved_model/4_14",
-  "pretrained_model_path": "../pretrain-model/pdbert",
+  "pretrained_model_path": "../pretrained-model/pdbert",
 
   "block_size": 512,
   "train_batch_size": 16,
@@ -14,7 +14,7 @@
   "PathNum": 4,
 
   "weight_decay": 0.0001,
-  "learning_rate": 1.5e-05,
+  "learning_rate": 1.5e-04,
   "adam_epsilon": 1e-08,
   "max_grad_norm": 1.0,
   "threshold": null,

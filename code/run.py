@@ -212,7 +212,6 @@ def evaluate(args, eval_dataset, model):
     for batch in tqdm(eval_dataloader, desc="Making Predictions"):
         paths = [tensor.to(args.device) for tensor in batch[:-1]]
         labels = batch[-1].to(args.device)
-        model.train()
         model_inputs = {
             f'input_ids{i + 1}': path
             for i, path in enumerate(paths)
@@ -283,7 +282,6 @@ def test(args, test_dataset, model):
     for batch in tqdm(test_dataloader, desc="Making Predictions"):
         paths = [tensor.to(args.device) for tensor in batch[:-1]]
         labels = batch[-1].to(args.device)
-        model.train()
         model_inputs = {
             f'input_ids{i + 1}': path
             for i, path in enumerate(paths)
