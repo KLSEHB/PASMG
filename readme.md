@@ -133,7 +133,7 @@ Once the path-based dataset is ready, you can train and evaluate the PASMG model
 #### 🔹 Option 1: Specify All Parameters via Command Line
 You can directly pass all configuration parameters as command-line arguments when running the training script:
 ```shell
-python run.py ExecutionPaths_train_set=../Dataset/4PathsDataset/14/Devign/train.jsonl ExecutionPaths_valid_set=../Dataset/4PathsDataset/14/Devign/valid.jsonl ExecutionPaths_test_set=../Dataset/4PathsDataset/14/Devign/test.jsonl output_dir=../saved_model/4_14 pretrained_model_path=../pretrain-model/pdbert block_size=512 train_batch_size=16 eval_batch_size=16 epochs=7 gradient_accumulation_steps=2 seed=619 PathNum=4 weight_decay=0.0001 learning_rate=1.5e-05 adam_epsilon=1e-08 max_grad_norm=1.0 threshold=null do_train=true do_test=true write_results=false
+python run.py --ExecutionPaths_train_set=../Dataset/4PathsDataset/14/Devign/train.jsonl --ExecutionPaths_valid_set=../Dataset/4PathsDataset/14/Devign/valid.jsonl --ExecutionPaths_test_set=../Dataset/4PathsDataset/14/Devign/test.jsonl --output_dir=../saved_model/4_14 --pretrained_model_path=../pretrained-model/pdbert --block_size=512 --train_batch_size=16 --eval_batch_size=16 --epochs=7 --gradient_accumulation_steps=2 --seed=619 --PathNum=4 --weight_decay=0.0001 --learning_rate=1.5e-04 --adam_epsilon=1e-08 --max_grad_norm=1.0
 ```
 #### 🔹 Option 2: Use Configuration File
 Alternatively, you can define all parameters in config.json, and simply run:
